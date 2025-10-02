@@ -1,24 +1,37 @@
 # Retail Sales Analytics & Forecasting (Rossmann)
 
-This project explores daily sales data from Rossmann retail stores and builds a forecasting model to predict future sales.  
-The goal was to simulate a real business problem: understanding what factors drive sales (promotions, competition, seasonality, store type) and creating a reliable predictive model that can help retailers plan better.
+Overview
 
----
+This project is about predicting how much sales a retail store will make on a given day.
+Forecasting sales is critical for retailers because it helps them plan inventory, schedule staff, and design promotions without wasting resources. The aim of this project was to take real sales data and build a model that can forecast future sales more accurately than simple guesswork.
 
-## 🔎 What I Did
-- Performed **Exploratory Data Analysis (EDA)** to uncover trends, seasonality, and promo/holiday effects.
-- Engineered features such as **lags, rolling averages, competition months open, and calendar features**.
-- Built and compared models, with **XGBoost** emerging as the best performer.
-- Evaluated performance using **RMSE, MAPE, and R²** on a hold-out period.
+What I Did
 
----
+I started with historical data that included daily sales, promotions, holidays, and competition details. First, I explored the data to spot patterns — for example, sales are usually higher on weekends, promotions give a noticeable boost, and stores closer to competitors behave differently.
 
-## 📊 Key Outcomes
-- Achieved a forecasting accuracy of **YY% (MAPE)** with XGBoost.  
-- Identified **promo campaigns, lag features, and competition distance** as the strongest sales drivers.  
-- Produced recruiter-friendly visuals like **feature importance** and **actual vs predicted sales** charts.
+Then I prepared the data for modeling by:
 
----
+Cleaning missing or inconsistent values
+
+Creating new features like day of week, month, and time since a competitor opened
+
+Encoding store-level information like type and promotions
+
+Finally, I trained and compared different approaches. Simple baselines (like taking the average sales) gave me a starting point, but I then used an XGBoost model, which captured much more of the complexity in the data.
+
+Results
+
+The XGBoost model performed strongly:
+
+RMSE: 952.63 → predictions are on average within ~950 sales of the real numbers
+
+MAPE: 10.05% → forecasts are only about 10% off on average
+
+R²: 0.906 → the model explains about 91% of the variation in sales
+
+This is a big improvement over the baseline models, showing the machine learning approach is much more reliable.
+
+For a business, this means the model could help reduce stock-outs, cut down on overstock, and plan staff shifts more efficiently.
 
 ## 🛠 Tech Stack
 Python · pandas · scikit-learn · XGBoost · matplotlib · seaborn · Jupyter
